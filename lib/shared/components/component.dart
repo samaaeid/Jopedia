@@ -26,3 +26,35 @@ Widget DefaultButton({
 
   ),
 );
+
+Widget DefaultTextField({
+  required controller,
+  hint = '',
+  required type,
+  required Function onType,
+  isPassword = false,
+  SuffixIcon,
+  PrefixIcon,
+
+}) => Expanded(
+    child: TextFormField(
+      controller: controller,
+      keyboardType : TextInputType.text ,
+      validator: (value)
+      {
+      if(value!.isEmpty)
+      {
+        return 'title must not be empty';
+      }
+        return null;
+      },
+      decoration: InputDecoration(
+        hintText: hint,
+        fillColor: Colors.white.withOpacity(0.6),
+        filled: true,
+        suffixIcon: Icon(SuffixIcon , color: Color(0xff50B3CF),),
+        prefixIcon: PrefixIcon != null ? Icon(PrefixIcon , color: Color(0xff50B3CF),):null,
+      ),
+
+    ),
+  );
