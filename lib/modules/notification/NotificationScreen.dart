@@ -10,9 +10,15 @@ class NotificationScreen extends StatefulWidget {
 }
 
 class _NotificationScreenState extends State<NotificationScreen> {
+  void initState() {
+    super.initState();
+  }
+  int notificationNumber=4;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xffF6F9FA),
       appBar: AppBar(
         backgroundColor: Color(0xffF6F9FA),
         elevation: 0.0,
@@ -23,38 +29,57 @@ class _NotificationScreenState extends State<NotificationScreen> {
           },
           icon: Icon(
             Icons.arrow_back_ios_outlined,
-            color: Colors.black,
+            color: Colors.teal,
           ),
         ),
 
       ),
       body: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 18.0),
         child: SingleChildScrollView(
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: Text(
-                  'you have 2 new notifications',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20.0,
-                    color: Colors.teal,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'you have',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Color(0xff31836D),
+                    ),
                   ),
-                ),
+                  Text(
+                    ' $notificationNumber',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Color(0xff0CA6B7),
+                    ),
+                  ),
+                  Text(
+                    ' new notifications',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20.0,
+                      color: Color(0xff31836D),
+                    ),
+                  ),
+                ],
               ),
               SizedBox(
                 height: 40.0,
               ),
               Row(
+               // mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     'Today',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 18.0,
-                      color: Colors.teal,
+                      color: Color(0xff0CA6B7),
                     ),
                   ),
                   SizedBox(
@@ -68,7 +93,7 @@ class _NotificationScreenState extends State<NotificationScreen> {
                     ),
                   ),
                 ],
-              ),
+              ), //today text
               SizedBox(
                 height: 20.0,
               ),
@@ -90,68 +115,103 @@ class _NotificationScreenState extends State<NotificationScreen> {
   }
 
 
-  Widget BuildChatItem()=>Row(
-    children: [
-      Stack(
-        alignment: AlignmentDirectional.bottomEnd,
-        children: [
-          CircleAvatar(
-            radius: 30.0,
-            backgroundImage: NetworkImage('https://static.wikia.nocookie.net/lucerne/images/d/d1/Hermione_Granger2.jpg/revision/latest/scale-to-width-down/1200?cb=20120209185858'),
-          ),
-        ],
-      ),
-      SizedBox(
-        width: 20.0,
-      ),
-      Expanded(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              children: [
-                Text(
-                  'rana bahaa',
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
-                  ),
-                ),
-                Container(
-                  width: 50.0,
-                  height: 10.0,
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 130.0,top: 0.0,right: 0.0,bottom: 0.0,),
-                    child: MaterialButton(
-                      onPressed: (){},
-                      child: Icon(
-                        Icons.close_rounded,
-                        color: Colors.red,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ),
-            SizedBox(
-              height: 5.0,
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    'transfered 250 LE to you',
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
+  Widget BuildChatItem()=>
+      Container(
+        height: 80.0,
+        margin: EdgeInsets.symmetric(vertical: 0.0, horizontal: 5.0),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(10.0),
+          boxShadow: [
+          BoxShadow(
+          color: Color(0xff26A4BD),
+          offset: Offset(0, 2), //(x,y)
+          blurRadius: 6.0,
             ),
           ],
         ),
-      )
-    ],
-  );
+        child: Row(
+         children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: CircleAvatar(
+              radius: 30.0,
+              backgroundImage: AssetImage('assets/images/profile.JPG'),
+            ),
+          ),
+          SizedBox(
+            width: 20.0,
+          ),
+          Expanded(
+            child: Column(
+              //crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+                      child: Text(
+                        'Rana Bahaa',
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Color(0xff0CA6B7),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 16.0,
+                        ),
+                      ),
+                    ),
+                    Container(
+                      width: 25.0,
+                      height: 25.0,
+                      margin: EdgeInsets.fromLTRB(125.0, 10.0, 0.0, 0.0),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(20.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey,
+                            offset: Offset(0.5, 1.0), //(x,y)
+                            blurRadius: 6.0,
+                          ),
+                        ],
+                      ),
+                      child: MaterialButton(
+                        padding: EdgeInsets.all(0),
+                        minWidth: 0,
+                        onPressed: (){},
+                        child: Icon(
+                          Icons.close_rounded,
+                          color: Color(0xffBB0B0B),
+                          size: 22.0,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                Row(
+                 // mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'transfered 250 LE to you',
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Color(0xff31836D),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+    ),
+      );
 }

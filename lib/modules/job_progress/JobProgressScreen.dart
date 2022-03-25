@@ -8,6 +8,7 @@ class JobProgressScreen extends StatefulWidget {
 }
 
 class _JobProgressScreenState extends State<JobProgressScreen> {
+  double progress = 120.0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +22,7 @@ class _JobProgressScreenState extends State<JobProgressScreen> {
           },
           icon: Icon(
             Icons.arrow_back_ios_outlined,
-            color: Colors.black,
+            color: Colors.teal,
           ),
         ),
 
@@ -32,7 +33,7 @@ class _JobProgressScreenState extends State<JobProgressScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'current progress',
+                'Current Progress',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24.0,
@@ -48,6 +49,18 @@ class _JobProgressScreenState extends State<JobProgressScreen> {
 
               ),
             ],
+          ),
+          Expanded(
+            child: Slider(
+              value:progress,
+              max: 220.0,
+              min: 80.0,
+              onChanged:(value){
+                setState(() {
+                  progress = value;
+                });
+              },
+            ),
           ),
         ],
       ),

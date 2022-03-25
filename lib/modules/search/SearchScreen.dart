@@ -14,6 +14,7 @@ class _SearchScreenState extends State<SearchScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('search'),
+        backgroundColor: Color(0xff08787F),
       ),
       body: Column(
         children: [

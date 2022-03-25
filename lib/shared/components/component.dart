@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 Widget DefaultButton({
   double width = double.infinity ,
   Color background = Colors.blue,
-  double rad = 0.0,
   required Function function,
   required String text,
 }) => Container(
@@ -36,10 +35,10 @@ Widget DefaultTextField({
   SuffixIcon,
   PrefixIcon,
 
-}) => Expanded(
+}) => Container(
     child: TextFormField(
       controller: controller,
-      keyboardType : TextInputType.text ,
+      keyboardType : type ,
       validator: (value)
       {
       if(value!.isEmpty)

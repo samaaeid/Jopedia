@@ -30,109 +30,105 @@ class CreateJobScreen extends StatelessWidget {
         elevation: 0.0, //No shadow
 
       ),
-      body: Container(
-        color: Colors.grey.shade100,
-        child: Padding(
-          padding: const EdgeInsets.all(40.0),
-
-
-          child: Column(
-
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-
-              Container(
-                width: double.infinity,
-                child: Text(
-                  'Create job',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 40.0,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold
+      body: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Center(
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: Center(
+                    child: Text(
+                      'Create Job',
+                      style: TextStyle(
+                        fontSize:40.0,
+                        fontWeight: FontWeight.bold ,
+                      ),
+                    ),
                   ),
-
                 ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
-              Container(
-                width: 250,
+                SizedBox(
+                  height:40.0,
+                ),
+                Container(
+                  width: 250,
 
-                child: TextFormField(
+                  child: TextFormField(
 
-                  controller: title_conroller,
-                  keyboardType : TextInputType.text ,
+                    controller: title_conroller,
+                    keyboardType : TextInputType.text ,
 
-                  validator: (value)
-                  {
-                    if(value!.isEmpty)
+                    validator: (value)
                     {
-                      return 'title must not be empty';
-                    }
-                    return null;
+                      if(value!.isEmpty)
+                      {
+                        return 'title must not be empty';
+                      }
+                      return null;
 
-                  },
-                  decoration: InputDecoration(
-                    hintText: 'title',
-                    //prefixIcon: Icon(Icons.title),
-                    fillColor: Colors.white.withOpacity(0.6),
-                    filled: true,
-                    border: InputBorder.none,
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'title',
+                      //prefixIcon: Icon(Icons.title),
+                      fillColor: Colors.white.withOpacity(0.6),
+                      filled: true,
+                      border: InputBorder.none,
 
+
+                    ),
 
                   ),
-
                 ),
-              ), //title
-              SizedBox(height: 7,),
-              Container(
+                SizedBox(height: 7,),
+                Container(
 
-                //height: 200.0,
-                child: TextFormField(
-                  maxLines: 7,
-                  //maxLines: null,
-                  keyboardType: TextInputType.multiline,
+                  //height: 200.0,
+                  child: TextFormField(
+                    maxLines: 7,
+                    //maxLines: null,
+                    keyboardType: TextInputType.multiline,
 
-                  controller: description_conroller,
-                  //keyboardType : TextInputType.text ,
-                  validator: (value)
-                  {
-                    if(value!.isEmpty)
+                    controller: description_conroller,
+                    //keyboardType : TextInputType.text ,
+                    validator: (value)
                     {
-                      return 'title must not be empty';
-                    }
-                    return null;
+                      if(value!.isEmpty)
+                      {
+                        return 'title must not be empty';
+                      }
+                      return null;
 
-                  },
-                  decoration: InputDecoration(
-                    hintText: 'Description',
-                    fillColor: Colors.white.withOpacity(0.6),
-                    filled: true,
-                    border: InputBorder.none,
-                    //contentPadding: const EdgeInsets.symmetric(vertical: 40.0),
+                    },
+                    decoration: InputDecoration(
+                      hintText: 'Description',
+                      fillColor: Colors.white.withOpacity(0.6),
+                      filled: true,
+                      border: InputBorder.none,
+                      //contentPadding: const EdgeInsets.symmetric(vertical: 40.0),
 
-                    //border: InputBorder.none,
+                      //border: InputBorder.none,
 
+
+
+                    ),
 
 
                   ),
-
-
                 ),
-              ), //description
-              SizedBox(height: 7,),
-              DefaultTextField(
-                controller: location_conroller ,
-                type: TextInputType.emailAddress,
-                onType: (){},
-                hint:'Location',
-                SuffixIcon: Icons.add_location_alt,
-              ), //location
-              SizedBox(height: 7,),
-              Expanded(
-                child: TextFormField(
+                SizedBox(height: 7,),
+                DefaultTextField(
+                  controller: location_conroller ,
+                  type: TextInputType.emailAddress,
+                  onType: (){
+                    print('everything is ok');
+                  },
+                  hint:'Location',
+                  SuffixIcon: Icons.add_location_alt,
+                ), //location
+                SizedBox(height: 7,),
+                TextFormField(
                   controller: salary_conroller,
                   keyboardType : TextInputType.number ,
                   validator: (value)
@@ -153,78 +149,73 @@ class CreateJobScreen extends StatelessWidget {
 
                   ),
 
+                ), //salary
+                SizedBox(height: 7,),
+                TextFormField(
+                  controller: time_conroller,
+                  keyboardType : TextInputType.datetime ,
+                  onTap: (){
+                    showTimePicker(context:context,
+                      initialTime:TimeOfDay.now() ,).then((value){
+                      date_conroller.text = value!.format(context).toString();
+                      print(value.format(context));
+                    } );
+                  },
+                  validator: (value)
+                  {
+                    if(value!.isEmpty)
+                    {
+                      return 'title must not be empty';
+                    }
+                    return null;
+
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'time',
+                    suffixIcon: Icon(Icons.watch_later_outlined , color: Color(0xff50B3CF),),
+                    fillColor: Colors.white.withOpacity(0.6),
+                    filled: true,
+                    border: InputBorder.none,
+                  ),
+
                 ),
-              ), //salary
-              SizedBox(height: 7,),
-              Expanded(
-                  child: TextFormField(
-                    controller: time_conroller,
-                    keyboardType : TextInputType.datetime ,
-                    onTap: (){
-                      showTimePicker(context:context,
-                        initialTime:TimeOfDay.now() ,).then((value){
-                        date_conroller.text = value!.format(context).toString();
-                        print(value.format(context));
-                      } );
-                    },
-                    validator: (value)
+                SizedBox(height: 7,),
+                TextFormField(
+                  controller: date_conroller,
+                  keyboardType : TextInputType.datetime ,
+                  onTap: (){
+                    showDatePicker(context:context,
+                      initialDate:DateTime.now() ,
+                      firstDate:DateTime.now(),
+                      lastDate:DateTime.parse('2022-07-07'),
+                    ).then((value){
+
+                      print(DateFormat.yMMMd().format(value!));
+                      date_conroller.text= DateFormat.yMMMd().format(value);
+
+                    } );
+                  },
+                  validator: (value)
+                  {
+                    if(value!.isEmpty)
                     {
-                      if(value!.isEmpty)
-                      {
-                        return 'title must not be empty';
-                      }
-                      return null;
+                      return 'title must not be empty';
+                    }
+                    return null;
 
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'time',
-                      suffixIcon: Icon(Icons.watch_later_outlined , color: Color(0xff50B3CF),),
-                      fillColor: Colors.white.withOpacity(0.6),
-                      filled: true,
-                      border: InputBorder.none,
-                    ),
+                  },
+                  decoration: InputDecoration(
+                    hintText: 'Date ',
+                    suffixIcon: Icon(Icons.calendar_today, color: Color(0xff50B3CF),),
+                    fillColor: Colors.white.withOpacity(0.6),
+                    filled: true,
+                    border: InputBorder.none,
 
-                  )),//time
-              SizedBox(height: 7,),
-              Expanded(
-                  child: TextFormField(
-                    controller: date_conroller,
-                    keyboardType : TextInputType.datetime ,
-                    onTap: (){
-                      showDatePicker(context:context,
-                        initialDate:DateTime.now() ,
-                        firstDate:DateTime.now(),
-                        lastDate:DateTime.parse('2022-07-07'),
-                      ).then((value){
+                  ),
 
-                        print(DateFormat.yMMMd().format(value!));
-                        date_conroller.text= DateFormat.yMMMd().format(value);
-
-                      } );
-                    },
-                    validator: (value)
-                    {
-                      if(value!.isEmpty)
-                      {
-                        return 'title must not be empty';
-                      }
-                      return null;
-
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Date ',
-                      suffixIcon: Icon(Icons.calendar_today, color: Color(0xff50B3CF),),
-                      fillColor: Colors.white.withOpacity(0.6),
-                      filled: true,
-                      border: InputBorder.none,
-
-                    ),
-
-                  )), //date
-              SizedBox(height: 7,),
-              Expanded(
-
-                child: TextFormField(
+                ), //date
+                SizedBox(height: 7,),
+                TextFormField(
 
                   controller: photo_conroller,
                   keyboardType : TextInputType.text ,
@@ -248,26 +239,24 @@ class CreateJobScreen extends StatelessWidget {
 
                   ),
 
-                ),
-              ), //photo
-              SizedBox(height: 7,),
-              Container(
-                width: double.infinity,
-                child: DefaultButton(
-                  text: 'Create',
-                  function: (){
-                    print('everything is okay');
-                  },
-                  background: Color(0xff08787F),
-                  width: 150.0,
+                ), //photo
+                SizedBox(height: 7,),
+                Container(
+                  width: double.infinity,
+                  child: DefaultButton(
+                    text: 'Create',
+                    function: (){
+                      print('everything is okay');
+                    },
+                    background: Color(0xff08787F),
+                    width: 150.0,
 
+                  ),
                 ),
-              )
 
-            ],
+              ],
+            ),
           ),
-
-
         ),
       ),
     );

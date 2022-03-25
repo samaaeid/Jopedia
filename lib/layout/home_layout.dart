@@ -1,0 +1,315 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+//import 'package:fluttertrain/modules/archived_tasks/archived_tasks_screen.dart';
+//import 'package:fluttertrain/modules/done_tasks/done_tasks_screen.dart';
+//import 'package:fluttertrain/modules/new_tasks/new_tasks_screen.dart';
+import 'package:jopedia/shared/components/component.dart';
+import 'package:jopedia/modules/wallet/WalletScreen.dart';
+//import 'package:sqflite/sqflite.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+
+class home_layout extends StatefulWidget {
+  @override
+  State<home_layout> createState() => _home_layoutState();
+}
+
+class _home_layoutState extends State<home_layout> {
+  int currentIndex = 0;
+  List<Widget> screen = [
+    //NewTasksScreen(),
+    //DoneTasksScreen(),
+    //ArchivedTasksScreen(),
+    //WalletScreen(),
+  ];
+  //late Database database;
+  var scaffoldKey = GlobalKey<ScaffoldState>();
+  IconData fabIcon = Icons.add;
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: screen[currentIndex],
+      key: scaffoldKey,
+      bottomNavigationBar: ClipRRect(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30.0),
+          topRight: Radius.circular(30.0),
+        ),
+        child: BottomAppBar(
+          color: Color(0xffE9F1F6),
+          shape: CircularNotchedRectangle(),
+          clipBehavior: Clip.antiAlias,
+          notchMargin: 8,
+          child: BottomNavigationBar(
+            backgroundColor: Color(0xffE9F1F6),
+            type: BottomNavigationBarType.fixed,
+            onTap: (index) {
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            items: [
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  "assets/icons/home.svg",
+                  height: 23.0,
+                  width: 23.0,
+                  color:
+                  currentIndex == 0 ? Color(0xff50B3CF) : Color(0xffA2BBCD),
+                ),
+                title: Text(
+                  'Home',
+                  style: TextStyle(
+                    color: currentIndex == 0
+                        ? Color(0xff50B3CF)
+                        : Color(0xffA2BBCD),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10.0,
+                  ),
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  "assets/icons/bell.svg",
+                  height: 23.0,
+                  width: 23.0,
+                  color:
+                  currentIndex == 1 ? Color(0xff50B3CF) : Color(0xffA2BBCD),
+                ),
+                title: Text(
+                  'Notification',
+                  style: TextStyle(
+                    color: currentIndex == 1
+                        ? Color(0xff50B3CF)
+                        : Color(0xffA2BBCD),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10.0,
+                  ),
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  "assets/icons/comment (1).svg",
+                  height: 23.0,
+                  width: 23.0,
+                  color:
+                  currentIndex == 2 ? Color(0xff50B3CF) : Color(0xffA2BBCD),
+                ),
+                title: Text(
+                  'Messages',
+                  style: TextStyle(
+                    color: currentIndex == 2
+                        ? Color(0xff50B3CF)
+                        : Color(0xffA2BBCD),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10.0,
+                  ),
+                ),
+              ),
+              BottomNavigationBarItem(
+                icon: SvgPicture.asset(
+                  "assets/icons/credit-card (1).svg",
+                  height: 23.0,
+                  width: 23.0,
+                  color:
+                  currentIndex == 3 ? Color(0xff50B3CF) : Color(0xffA2BBCD),
+                ),
+                title: Text(
+                  'Wallet',
+                  style: TextStyle(
+                    color: currentIndex == 3
+                        ? Color(0xff50B3CF)
+                        : Color(0xffA2BBCD),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 10.0,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: Container(
+        height: 50.0,
+        width: 50.0,
+        child: FloatingActionButton(
+          onPressed: () {},
+          child: Icon(
+            Icons.add,
+            size: 25.0,
+          ),
+          backgroundColor: Color(0xff50B3CF),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      appBar: AppBar(
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.centerLeft,
+                end: Alignment.centerRight,
+                colors: [
+                  Color(0xff50B3CF),
+                  Color(0xff0F4C5C),
+                ],
+              )),
+        ),
+        elevation: 0,
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children:
+          [
+            DrawerHeader(
+              child: Row(
+                children:
+                [
+                  SizedBox(width: 10.0,),
+                  CircleAvatar(
+                    backgroundImage: AssetImage('assets/images/drawer.jpeg',),
+                    radius: 35.0,
+                  ),
+                  SizedBox(width: 10.0,),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children:
+                    [
+                      Text(
+                        'Welcome Bakr',
+                        style: TextStyle
+                          (
+                          color: Color(0xff0F4C5C),
+                          fontSize: 15.0,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Text(
+                        'aboubakrahmed@gmail.com',
+                        style: TextStyle
+                          (
+                          color: Color(0xffA2BBCD),
+                          fontSize: 10.0,
+                          fontFamily: 'Poppins',
+                          fontWeight: FontWeight.w300,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(height: 5.0,),
+            ListTile(
+              leading: IconButton(
+                onPressed: (){},
+                icon: SvgPicture.asset(
+                  "assets/icons/bookmark.svg",
+                  height: 17.0,
+                  width: 17.0,
+                  color: Color(0xff0F4C5C),
+                ),
+              ),
+              title: Text(
+                'Saved Jobs',
+                style: TextStyle
+                  (
+                  color: Color(0xff0F4C5C),
+                  fontSize: 17.0,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              onTap: ()
+              {
+
+              },
+            ),
+            SizedBox(height: 5.0,),
+            ListTile(
+              leading: IconButton(
+                onPressed: (){},
+                icon: Icon(
+                  Icons.all_inbox,
+                  size: 20.0,
+                  color: Color(0xff0F4C5C),
+                ),
+              ),
+              title: Text(
+                'Requests',
+                style: TextStyle
+                  (
+                  color: Color(0xff0F4C5C),
+                  fontSize: 17.0,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              onTap: ()
+              {
+
+              },
+            ),
+            SizedBox(height: 5.0,),
+            ListTile(
+              leading: IconButton(
+                onPressed: (){},
+                icon: Icon(
+                  Icons.live_tv_rounded,
+                  size: 20.0,
+                  color: Color(0xff0F4C5C),
+                ),
+              ),
+              title: Text(
+                'Live',
+                style: TextStyle
+                  (
+                  color: Color(0xff0F4C5C),
+                  fontSize: 17.0,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              onTap: ()
+              {
+
+              },
+            ),
+            SizedBox(height: 5.0,),
+            ListTile(
+              leading: IconButton(
+                onPressed: (){},
+                icon: Icon(
+                  Icons.logout_outlined,
+                  size: 20.0,
+                  color: Color(0xff0F4C5C),
+                ),
+              ),
+              title: Text(
+                'Logout',
+                style: TextStyle
+                  (
+                  color: Color(0xff0F4C5C),
+                  fontSize: 17.0,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              onTap: ()
+              {
+
+              },
+            ),
+
+          ],
+        ),
+
+      ),
+    );
+  }
+}
