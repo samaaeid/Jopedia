@@ -19,7 +19,7 @@ class _home_layoutState extends State<home_layout> {
     //NewTasksScreen(),
     //DoneTasksScreen(),
     //ArchivedTasksScreen(),
-    //WalletScreen(),
+    WalletScreen(),
   ];
   //late Database database;
   var scaffoldKey = GlobalKey<ScaffoldState>();
