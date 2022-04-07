@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jopedia/modules/create_job/CreateJobScreen.dart';
+import 'package:jopedia/modules/home/HomeScreen.dart';
+import 'package:jopedia/modules/notification/NotificationScreen.dart';
+import 'package:jopedia/modules/saved_jobs/SavedJobScreen.dart';
 //import 'package:fluttertrain/modules/archived_tasks/archived_tasks_screen.dart';
 //import 'package:fluttertrain/modules/done_tasks/done_tasks_screen.dart';
 //import 'package:fluttertrain/modules/new_tasks/new_tasks_screen.dart';
@@ -16,9 +20,10 @@ class home_layout extends StatefulWidget {
 class _home_layoutState extends State<home_layout> {
   int currentIndex = 0;
   List<Widget> screen = [
-    //NewTasksScreen(),
-    //DoneTasksScreen(),
-    //ArchivedTasksScreen(),
+    //home_layout(),
+    HomeScreen(),
+    NotificationScreen(),
+    SavedJobScreen(),
     WalletScreen(),
   ];
   //late Database database;
@@ -137,7 +142,10 @@ class _home_layoutState extends State<home_layout> {
         height: 50.0,
         width: 50.0,
         child: FloatingActionButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(
+              builder:(context)=>CreateJobScreen(),),);
+          },
           child: Icon(
             Icons.add,
             size: 25.0,
