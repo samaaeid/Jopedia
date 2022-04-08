@@ -1,6 +1,7 @@
 import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:jopedia/layout/home_layout.dart';
 import 'package:jopedia/models/user/user.dart';
 import 'package:jopedia/modules/edit_profile/EditProfilePage.dart';
 import 'package:jopedia/utils/user_preferences.dart';
@@ -73,6 +74,43 @@ class _ProfilePageState extends State<ProfilePage>
                       ),
                     ],
                   ),
+                ),
+                SizedBox(
+                  height: 5.0,
+                ),
+                ListTile(
+                  leading: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => home_layout()),
+                      );
+                    },
+                    icon: SvgPicture.asset(
+                      "assets/icons/home.svg",
+                      height: 17.0,
+                      width: 17.0,
+                      color: Color(0xff0F4C5C),
+                    ),
+                  ),
+                  title: GestureDetector(
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => home_layout()),
+                      );
+                    },
+                    child: Text(
+                      'Home',
+                      style: TextStyle(
+                        color: Color(0xff0F4C5C),
+                        fontSize: 17.0,
+                        fontFamily: 'Poppins',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  onTap: () {},
                 ),
                 SizedBox(
                   height: 5.0,

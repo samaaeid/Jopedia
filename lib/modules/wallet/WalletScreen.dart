@@ -2,6 +2,9 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:jopedia/modules/Card/YourCard.dart';
+import 'package:jopedia/modules/deposit/DepositScreen.dart';
+import 'package:jopedia/modules/withdrawal/WithdrawalScreen.dart';
 
 class WalletScreen extends StatelessWidget{
   @override
@@ -72,7 +75,12 @@ class WalletScreen extends StatelessWidget{
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: MaterialButton(
-                            onPressed: () {  },
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => DepositScreen()),
+                              );
+                            },
                             child: Container(
                               child: Row(
                                 mainAxisAlignment:MainAxisAlignment.start ,
@@ -116,7 +124,12 @@ class WalletScreen extends StatelessWidget{
                             borderRadius: BorderRadius.circular(5.0),
                           ),
                           child: MaterialButton(
-                            onPressed: () {  },
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(builder: (context) => WithdrawalScreen()),
+                              );
+                            },
                             child: Container(
                               child: Row(
                                 mainAxisAlignment:MainAxisAlignment.center ,
@@ -160,7 +173,12 @@ class WalletScreen extends StatelessWidget{
                       ),
                       child: MaterialButton(
                         color: Colors.white,
-                        onPressed: () {  },
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => YourCard()),
+                          );
+                        },
                         child: Row(
                           mainAxisAlignment:MainAxisAlignment.start ,
                           children: [

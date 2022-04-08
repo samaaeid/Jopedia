@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class SavedJobScreen extends StatefulWidget {
   @override
+
   State<SavedJobScreen> createState() => _NewTasksScreenState();
 }
 
@@ -11,16 +12,17 @@ class _NewTasksScreenState extends State<SavedJobScreen> {
 
 
 
-
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Stack(
-      alignment: Alignment.bottomCenter,
+      alignment: Alignment.center,
       children: [
 
         Container(
-          width: double.infinity,
-          height: 600.0,
+          width: width,
+          height: height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(30.0),

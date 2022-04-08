@@ -2,7 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:jopedia/modules/create_job/CreateJobScreen.dart';
 import 'package:jopedia/modules/home/HomeScreen.dart';
+import 'package:jopedia/modules/my_profile/ProfilePage.dart';
 import 'package:jopedia/modules/notification/NotificationScreen.dart';
+import 'package:jopedia/modules/requests/RequestScreen.dart';
 import 'package:jopedia/modules/saved_jobs/SavedJobScreen.dart';
 //import 'package:fluttertrain/modules/archived_tasks/archived_tasks_screen.dart';
 //import 'package:fluttertrain/modules/done_tasks/done_tasks_screen.dart';
@@ -177,9 +179,17 @@ class _home_layoutState extends State<home_layout> {
                 children:
                 [
                   SizedBox(width: 10.0,),
-                  CircleAvatar(
-                    backgroundImage: AssetImage('assets/images/drawer.jpeg',),
-                    radius: 35.0,
+                  GestureDetector(
+                    child: CircleAvatar(
+                      backgroundImage: AssetImage('assets/images/drawer.jpeg',),
+                      radius: 36.0,
+                    ),
+                    onTap: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProfilePage()),
+                      );
+                    },
                   ),
                   SizedBox(width: 10.0,),
                   Column(
@@ -223,19 +233,24 @@ class _home_layoutState extends State<home_layout> {
                   color: Color(0xff0F4C5C),
                 ),
               ),
-              title: Text(
-                'Saved Jobs',
-                style: TextStyle
-                  (
-                  color: Color(0xff0F4C5C),
-                  fontSize: 17.0,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
+              title: GestureDetector(
+                child: Text(
+                  'Saved Jobs',
+                  style: TextStyle
+                    (
+                    color: Color(0xff0F4C5C),
+                    fontSize: 17.0,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               onTap: ()
               {
-
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SavedJobScreen()),
+                );
               },
             ),
             SizedBox(height: 5.0,),
@@ -248,19 +263,24 @@ class _home_layoutState extends State<home_layout> {
                   color: Color(0xff0F4C5C),
                 ),
               ),
-              title: Text(
-                'Requests',
-                style: TextStyle
-                  (
-                  color: Color(0xff0F4C5C),
-                  fontSize: 17.0,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w600,
+              title: GestureDetector(
+                child: Text(
+                  'Requests',
+                  style: TextStyle
+                    (
+                    color: Color(0xff0F4C5C),
+                    fontSize: 17.0,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
               ),
               onTap: ()
               {
-
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => RequestScreen()),
+                );
               },
             ),
             SizedBox(height: 5.0,),
